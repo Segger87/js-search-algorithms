@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
+import { linearSearch } from './searches/linear';
+import { binarySearch } from './searches/binary';
 
 class displayWord extends Component {
     constructor(props){
         super();
     }
 
+    executeLinear = () => {
+        let result = linearSearch(this.props.data, this.props.randomWord);
+        console.log(result + 'result bro');
+    }
+
+    executeBinary = () => {
+        let result = binarySearch(this.props.data, this.props.randomWord);
+        console.log(result + 'binary');
+    }
+
     render(){
         const displayRandWord = 
         (<div>
             <p>Random word is {this.props.randomWord}</p>
-            <button>Binary</button>
-            <button>Linear</button>
+            <button onClick={this.executeBinary}>Binary</button>
+            <button onClick={this.executeLinear}>Linear</button>
         </div>
         );
 
