@@ -1,0 +1,23 @@
+.Background {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.Button, .ButtonMain {
+    background-color: white;
+    padding: 2rem;
+    margin: .25rem;
+    border-radius: 3px;
+    font-size: 30px;
+}
+
+.ButtonMain {
+    position: relative;
+    top: 400px;
+}

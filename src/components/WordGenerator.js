@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import DisplayWord from './displayWord';
+import ExecuteSearches from './ExecutedSearches';
+import classes from './word-style.module.css';
 
-class Word extends Component {
+class WordGenerator extends Component {
 
     state = {
         wordList: [],
         hasFetched: false,
         randomWord: '',
-        generatedRandom: false
+        hasRandom: false
     }
 
    componentWillMount(){
@@ -17,29 +18,30 @@ class Word extends Component {
     }
 
     generateWord = () => {
-        const range = this.state.wordList.length;
         const words = [...this.state.wordList];
+        const range = words.length;
+  
         let randomNum = Math.floor(Math.random() * range);
-        this.setState({randomWord : words[randomNum], generatedRandom: true});
+        this.setState({randomWord : words[randomNum], hasRandom: true});
     }
 
  render(){
     const generateButton = (
         <div>
-            <button onClick={this.generateWord}>Generate Random Word</button>
-            <DisplayWord 
+            <button className={classes.ButtonMain} onClick={this.generateWord}>Generate Random Word</button>
+            <ExecuteSearches 
             data={this.state.wordList} 
             randomWord={this.state.randomWord} 
-            clicked={this.state.generatedRandom}/> 
+            clicked={this.state.hasRandom}/> 
         </div>
     )
 
     return (
-        <div>
+        <div className={classes.Background}>
             {(this.state.hasFetched) ? generateButton : <p>Loading Please Wait...</p>}
         </div>
     )};
 }
 
 
-export default Word;
+export default WordGenerator;

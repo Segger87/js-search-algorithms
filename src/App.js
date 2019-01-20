@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Word from './components/Word';
+import WordGenerator from './components/WordGenerator';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Word />
+        <WordGenerator /> 
       </div>
     );
   }

@@ -1,17 +1,17 @@
-export const binarySearch = (wordArray, searchTerm) => {
-        
+export const binarySearch = (arr, searchTerm) => {
     let front = 0;
-    let end = wordArray.length - 1;
+    let back = arr.length - 1;
 
-    while(front <= end){
-        let middle = (front + end) / 2;
-        if(wordArray[middle] === searchTerm) {
-            return wordArray[middle];
+    while (front <= back) {
+        let mid = Math.floor((front + back) / 2);
+        if (arr[mid] === searchTerm) {
+            return mid;
         }
-        if(searchTerm > wordArray[middle]){
-            front = middle + 1; 
+        else if (arr[mid] < searchTerm) {
+            front = mid + 1;
         } else {
-            end = wordArray.length;
+            back = mid - 1;
         }
     }
+    return -1;
 }
