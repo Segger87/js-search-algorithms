@@ -14,7 +14,7 @@ class WordGenerator extends Component {
    componentWillMount(){
         fetch('https://raw.githubusercontent.com/dwyl/english-words/master/words.txt')
         .then(res => res.text())
-        .then(words => this.setState({ wordList: words.split('\n'), hasFetched: true }));
+        .then(words => this.setState({ wordList: words.split('\n').sort(), hasFetched: true }));
     }
 
     generateWord = () => {
