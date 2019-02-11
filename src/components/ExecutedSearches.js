@@ -10,22 +10,24 @@ class ExecuteSearches extends Component {
     }
 
     state = {
-        linear: []
+        linear: [],
+        binary: []
     }
 
     executeLinear = () => {
         let result = linearSearch(this.props.data, this.props.randomWord);
-        let foo = { comparisons: result, word: this.props.randomWord};
-        console.log(foo)
-        let bar = this.state.linear.concat(foo)
+        let linearResult = {comparisons: result, word: this.props.randomWord};
+        let bar = this.state.linear.concat(linearResult)
         this.setState({linear: bar});
-        console.log(this.props.randomWord)
         console.log(this.state)
        alert(`Using Linear search the word is at position ${result.position} in the array and took ${result.count} comparisons`)
     }
 
     executeBinary = () => {
        let result = binarySearch(this.props.data, this.props.randomWord);
+       let binaryResult = {comparisons: result, word: this.props.randomWord};
+       let bar = this.state.binary.concat(binaryResult);
+       this.setState({binary: bar})
        alert(`Using Binary search the word is at position ${result.position} in the array and took ${result.count} comparisons`)
     }
 
@@ -42,11 +44,6 @@ class ExecuteSearches extends Component {
         return (
         <div className={classes.Background}>
             {(this.props.clicked) ? displayRandWord : <p>Waiting for that click bro</p>}
-            {/* <ul>
-            {this.props.data.map(word => (
-                <li key={word}>{word}</li>
-                ))};
-            </ul> */}
         </div>);
     }
 }
