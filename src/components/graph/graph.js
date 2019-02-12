@@ -1,30 +1,39 @@
 import React from 'react';
 import {LineChart} from 'react-easy-chart';
 
-const MyChart = ({data}) => (
+const MyChart = ({
+  linear,
+  binary
+}) => {
+  let linearArray = [];
+  let binaryArray = [];
+
+  linear.map(result => {
+    let linearObject = { x: result.word , y: result.comparisons }
+    linearArray.push(linearObject);
+  })
+
+  binary.map(result => {
+    let binaryObject = { x: result.word , y: result.comparisons.count }
+    binaryArray.push(binaryObject);
+  })
+  
+  return(
     <div>
-     <LineChart
-    xType={'text'}
-    axes
-    width={350}
-    height={250}
-    interpolate={'cardinal'}
-    data={[
-      [
-        { x: 'bob', y: 20 },
-        { x: 'Wed', y: 33 },
-        { x: 'Thu', y: 45 },
-        { x: 'Fri', y: 15 }
-      ], [
-        { x: 'Mon', y: 10 },
-        { x: 'Tue', y: 15 },
-        { x: 'Wed', y: 13 },
-        { x: 'Thu', y: 15 },
-        { x: 'Fri', y: 10 }
-      ]
+    <LineChart
+       xType={'text'}
+       axes
+       width={350}
+       height={250}
+       interpolate={'cardinal'}
+       data={[
+           linearArray, binaryArray
     ]}
   />
-    </div>
-)
+   </div>
+  )
+
+}
+
 
 export default MyChart

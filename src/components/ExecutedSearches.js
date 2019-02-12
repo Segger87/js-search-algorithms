@@ -14,13 +14,18 @@ class ExecuteSearches extends Component {
         binary: []
     }
 
+    executeSearches = () => {
+        this.executeBinary();
+        this.executeLinear();
+        console.log(this.state)
+    }
+
     executeLinear = () => {
         let result = linearSearch(this.props.data, this.props.randomWord);
         let linearResult = {comparisons: result, word: this.props.randomWord};
         let bar = this.state.linear.concat(linearResult)
         this.setState({linear: bar});
-        console.log(this.state)
-       alert(`Using Linear search the word is at position ${result.position} in the array and took ${result.count} comparisons`)
+       alert(`Using Linear search the word ${this.props.randomWord} took ${result} comparisons to find`)
     }
 
     executeBinary = () => {
@@ -28,16 +33,15 @@ class ExecuteSearches extends Component {
        let binaryResult = {comparisons: result, word: this.props.randomWord};
        let bar = this.state.binary.concat(binaryResult);
        this.setState({binary: bar})
-       alert(`Using Binary search the word is at position ${result.position} in the array and took ${result.count} comparisons`)
+       alert(`Using Binary search the word ${this.props.randomWord} took ${result.count} comparisons to find`)
     }
 
     render(){
         const displayRandWord = 
         (<div>
             <p>Random word is {this.props.randomWord}</p>
-            <button className={classes.Button} onClick={this.executeBinary}>Binary</button>
-            <button className={classes.Button} onClick={this.executeLinear}>Linear</button>
-            <MyChart />
+            <button className={classes.Button} onClick={this.executeSearches}>Perform Search</button>
+            <MyChart linear={this.state.linear} binary={this.state.binary}/>
         </div>
         );
 
