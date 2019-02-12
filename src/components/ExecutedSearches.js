@@ -23,16 +23,16 @@ class ExecuteSearches extends Component {
     executeLinear = () => {
         let result = linearSearch(this.props.data, this.props.randomWord);
         let linearResult = {comparisons: result, word: this.props.randomWord};
-        let bar = this.state.linear.concat(linearResult)
-        this.setState({linear: bar});
-       alert(`Using Linear search the word ${this.props.randomWord} took ${result} comparisons to find`)
+        let linearResultArray = this.state.linear.concat(linearResult)
+        this.setState({linear: linearResultArray});
+        alert(`Using Linear search the word ${this.props.randomWord} took ${result} comparisons to find`)
     }
 
     executeBinary = () => {
        let result = binarySearch(this.props.data, this.props.randomWord);
        let binaryResult = {comparisons: result, word: this.props.randomWord};
-       let bar = this.state.binary.concat(binaryResult);
-       this.setState({binary: bar})
+       let binaryResultArray = this.state.binary.concat(binaryResult);
+       this.setState({binary: binaryResultArray})
        alert(`Using Binary search the word ${this.props.randomWord} took ${result.count} comparisons to find`)
     }
 
